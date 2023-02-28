@@ -1,0 +1,265 @@
+                      Assignment number - 2
+
+
+1. WAP to find the duplicates present in an array.
+
+public class DuplicateElements {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+		int[] a= {3,5,4,3,7,5,2,7};
+		System.out.print("The duplicate elements are ");
+		for(int i=0;i<a.length;i++) {
+			for(int j=i+1;j<a.length;j++) {
+				if(a[i]==a[j]) {
+					
+					System.out.print(a[j]+" ");
+				}
+			}
+		}
+		
+	}
+
+}
+  
+
+o/p: The duplicate elements are 3 5 7 
+
+
+2. WAP to sort an array using Quick Sort Algorithm.
+
+class Demo{
+int partition(int[] A,int l,int h) {
+		int pivot=A[(l+h)/2];
+		while(l<=h) {
+			while(A[l]<pivot) {
+				l++;
+			}
+			while(A[h]>pivot) {
+				h--;
+			}
+			if(l<=h) {
+				int temp=A[l];
+				A[l]=A[h];
+				A[h]=temp;
+				l++;
+				h--;	
+			}
+		}
+		return l;
+	}
+	void quickSortRecursion(int A[],int l,int h) {
+		int p=partition(A,l,h);
+		if(l<p-1) {
+			quickSortRecursion(A,l,p-1);
+			
+		}
+		if(p<h) {
+			quickSortRecursion(A,p,h);
+		}
+		
+	}
+	void printArray(int[] A) {
+		for(int i=0;i<A.length;i++) {
+			System.out.print(A[i]+" ");
+		}
+		
+	}
+
+
+}
+public class QuickSort {
+
+	public static void main(String[] args) {	
+		int[] A= {2,3,5,1,66,9,33,11};
+		int n=A.length;	
+		Demo q=new Demo();
+		q.quickSortRecursion(A,0,n-1);
+		q.printArray(A);
+		
+	
+	}
+}
+
+output: 1 2 3 5 9 11 33 66 
+
+3. WAP to sort an array using Bubble Sort Algorithm.
+
+public class BubbleSort {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		int a[]={7,5,2,3,1,4,6};
+		for(int i=0;i<a.length;i++) {
+			for(int j=1;j<a.length-i;j++) {
+				if(a[j]>a[j-1]) {
+					int temp=a[j];
+					a[j]=a[j-1];
+					a[j-1]=temp;
+				}
+			}
+		}
+		for(int elem:a) {
+			System.out.print(elem+" ");
+		
+		}
+
+	}
+
+}
+
+Output: 7 6 5 4 3 2 1 
+
+
+4. WAP to sort an array using Merge Sort Algorithm.
+
+class Sort{
+	public static void conquer(int a[],int l,int m,int h) {
+		int i,j,c=l;
+		int b[]=new int[h+1];
+		for(i = l,j = m+1; i<=m && j<=h; c++)
+        {
+             if(a[i] <= a[j])
+            	 b[c] = a[i++];
+             else
+            	 b[c] = a[j++];
+        }
+		while(i <= m )    
+            b[c++] = a[i++];
+		while(j<=h)   
+            b[c++] = a[j++];
+     
+		for(i = l ; i <= h; i++)
+                   a[i] = b[i];
+		}		
+	 public static void Sort(int a[],int l,int h)
+	   {  
+	         if(l<h)
+	        {
+	           int m=(l+h)/2;
+	           Sort(a,l,m);
+	           Sort(a,m+1,h);
+	           conquer(a,l,m,h);
+	 
+	         } 
+ 
+	   }  
+	 
+	 public static void printarray(int a[])
+	{
+	       for(int i=0; i < a.length; i++)
+	        {
+	        
+	        System.out.print(a[i]+"  ");
+	        }
+}
+}
+public class MergeSort {
+
+	public static void main(String[] args) {
+	
+		int[] a= {5,3,8,2,0,4};
+		int n=a.length;
+		
+		Sort s=new Sort();
+		s.Sort(a, 0, n-1);
+		
+		s.printarray(a);
+		
+	}
+
+}
+
+
+Output: 0  2  3  4  5  8  
+
+
+5. WAP to sort an array using Selection Sort Algorithm.
+
+
+class SortSel {  
+    public static void selSort(int arr[]){  
+    	int temp;
+    	  for (int i = 0; i < arr.length - 1; i++)  
+          {
+    		  for(int j=i+1;j<arr.length;j++) {
+    			  if(arr[i]>arr[j]) {
+    				  temp=arr[i];
+    				  arr[i]=arr[j];
+    				  arr[j]=temp;
+    				  
+    			  }
+    		  }
+          }
+      }
+    void printArray(int arr[]) {
+    	for(int i=0;i<arr.length;i++) {
+    	System.out.print(arr[i]+" ");
+    	}
+    }
+}
+public class SelsctionSort {
+
+	public static void main(String[] args) {
+		
+		int arr[]= {3,5,89,2,94,60};
+		SortSel ss=new SortSel();
+		ss.selSort(arr);
+		ss.printArray(arr);
+
+	}
+
+}
+
+
+output: 2 3 5 60 89 94 
+
+
+6. WAP to check whether an array is a subset of another array.
+
+class Subset{
+	public boolean set(int a[],int b[],int n,int m) {
+		for(int i=0;i<=n;i++) {
+			for(int j=0;j<=m;j++) {
+				if(b[i]==a[j]) {
+					break;
+				}
+				if(j==m)
+					return false;
+			}	
+		}
+		return true;	
+	}
+}
+public class SubsetOfAnArray {
+
+	public static void main(String[] args) {
+		
+		int a[]= {2,5,8,4,9,3};
+		int b[]= {3,4,9};
+		Subset s=new Subset();
+		if(s.set(a, b, a.length, b.length)) {
+			System.out.println("array 2 is a subset of array1");
+		}
+		else
+			System.out.println("array2 is not subset of array1");
+		
+
+	}
+
+}
+
+
+
+output: array2 is not subset of array1
+
+
+
+
+
+
+
+
+
+
